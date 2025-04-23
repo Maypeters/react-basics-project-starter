@@ -9,7 +9,9 @@ import {
   Tag,
 } from "@chakra-ui/react";
 
+// Component to display a single recipe preview card
 export const RecipeListCard = ({ item, clickFn }) => {
+  // Only show selected health labels (e.g., Vegan or Vegetarian)
   const healthTags = ["Vegan", "Vegetarian"];
   const shownHealthLabels = item.healthLabels?.filter((label) =>
     healthTags.includes(label)
@@ -29,7 +31,7 @@ export const RecipeListCard = ({ item, clickFn }) => {
       flexDirection="column"
       textAlign="center"
     >
-      {/* Afbeelding bovenaan, buiten CardBody, strak tegen de randen */}
+      {/* Recipe image displayed at the top */}
       <Image src={item.image} objectFit="cover" w="100%" h="200px" />
 
       <CardBody display="flex" flexDirection="column" alignItems="center">
@@ -40,6 +42,7 @@ export const RecipeListCard = ({ item, clickFn }) => {
             </Text>
           )}
 
+          {/* Recipe title */}
           <Heading size="md">{item.label}</Heading>
 
           {/* Diet Labels */}
@@ -51,6 +54,7 @@ export const RecipeListCard = ({ item, clickFn }) => {
             ))}
           </Flex>
 
+          {/* Health labels */}
           <Flex gap={2} wrap="wrap" justify="center">
             {shownHealthLabels.map((label, index) => (
               <Tag key={index} colorScheme="blue" textTransform="uppercase">
@@ -59,10 +63,12 @@ export const RecipeListCard = ({ item, clickFn }) => {
             ))}
           </Flex>
 
+          {/* Dish type if available */}
           {item.dishType?.length > 0 && (
             <Text fontSize="sm">Dish: {item.dishType.join(", ")}</Text>
           )}
 
+          {/* Caution labels */}
           {item.cautions?.length > 0 && (
             <Text fontSize="sm" textTransform="uppercase" fontWeight="bold">
               Cautions:

@@ -1,5 +1,6 @@
 import { Box, Heading, Text, Image, Flex, Tag, Button } from "@chakra-ui/react";
 
+// Component to display detailed information about a selected recipe
 export const RecipePage = ({ recipe, onBack }) => {
   return (
     <Box bg="blue.50" minH="100vh" py={10} px={4}>

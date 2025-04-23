@@ -3,9 +3,12 @@ import { Center, Heading, Input, Flex, Box } from "@chakra-ui/react";
 import { data } from "../utils/data";
 import { RecipeListCard } from "../components/RecipeListCard";
 
+// Component to display a searchable list of recipes
 export const RecipeListPage = ({ onSelectRecipe }) => {
+  // State to hold the current search input from the user
   const [searchTerm, setSearchTerm] = useState("");
 
+  // Filter the recipes based on the user's search input (case-insensitive)
   const filteredRecipes = data.hits.filter((hit) =>
     hit.recipe.label.toLowerCase().includes(searchTerm.toLowerCase())
   );
